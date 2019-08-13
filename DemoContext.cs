@@ -35,6 +35,8 @@ namespace demo1
             modelBuilder.Entity<Note>(e =>
             {
                 e.HasOne(x => x.Item).WithOne(x => x.Note).HasForeignKey<Note>(x => x.ItemId);
+                e.HasQueryFilter(x => !x.Deleted);
+                e.HasIndex(x => x.ItemId).IsUnique().HasFilter($"[{nameof(Note.Deleted)}]=0");
             });
         }
     }
