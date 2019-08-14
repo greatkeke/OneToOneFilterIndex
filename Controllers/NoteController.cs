@@ -12,12 +12,10 @@ namespace demo1.Controllers
     [Route("[controller]")]
     public class NoteController : ControllerBase
     {
-        private readonly ILogger<NoteController> _logger;
         private readonly DemoContext _db;
 
-        public NoteController(ILogger<NoteController> logger, DemoContext db)
+        public NoteController(DemoContext db)
         {
-            _logger = logger;
             _db = db;
         }
 
